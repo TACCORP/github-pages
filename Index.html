@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser-arcade-physics.min.js"></script>
+    <style>
+        body { margin: 0; overflow: hidden; }
+    </style>
+</head>
+<body>
+    <div id="game"></div>
+
+<script>
+const config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    parent: 'game',
+    scene: {
+        preload: preload,
+        create: create
+    }
+};
+
+new Phaser.Game(config);
+
+function preload() {
+    // Загрузка WebP-изображений из папки assets
+    this.load.image('background', 'assets/background.webp');
+    this.load.image('castle', 'assets/castle.webp');
+}
+
+function create() {
+    // Добавление фона
+    this.add.image(0, 0, 'background')
+        .setOrigin(0)
+        .setDisplaySize(config.width, config.height);
+    
+    // Добавление замка в центр
+    this.add.image(config.width/2, config.height/2, 'castle')
+        .setScale(0.8);
+}
+</script>
+</body>
+</html>
